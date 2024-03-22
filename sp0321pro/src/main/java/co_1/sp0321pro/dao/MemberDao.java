@@ -150,7 +150,7 @@ public class MemberDao {
 	//업데이트
 	public void update(MemberDto member) {
 		jdbcTemplate.update("UPDATE MEMBER SET EMAIL = ?, NAME = ?, AGE = ?, memo=? WHERE MEMBERNO = ?",
-				member.getEmail(), member.getName(), member.getAge(), member.getMemo()
+				member.getEmail(), member.getName(), member.getAge(), member.getMemo(), member.getMemberno()
 				);
 	}
 
@@ -217,15 +217,35 @@ public class MemberDao {
 	}
 	
 	
+	public void memoUpdate(int memberno, String memo) {
+        jdbcTemplate.update("UPDATE MEMBER SET memo = ? WHERE memberno = ?", memo, memberno);
+    }
+
+    public void memoDelete(int memberno) {
+        jdbcTemplate.update("UPDATE MEMBER SET memo = NULL WHERE memberno = ?", memberno);
+    }
+
+    // memberno를 이용해 특정 회원의 메모를 조회합니다.
+    public String findMemoByMemberno(int memberno) {
+        return jdbcTemplate.queryForObject("SELECT memo FROM MEMBER WHERE memberno = ?", 
+                                           new Object[]{memberno}, String.class);
+    }
 	
-	public void memoUpdate(MemberDto member) {
-		jdbcTemplate.update("UPDATE MEMBER SET memo=? WHERE MEMBERNO = ?",
-				 member.getMemo()
-				);
-	}
-			public void memoDelete(int memberno) {
-				jdbcTemplate.update("delete from member where memberno = ?", memberno);
-			}
+//	public void memoUpdate(MemberDto member) {
+//		jdbcTemplate.update("UPDATE MEMBER SET memo=? WHERE MEMBERNO = ?",
+//				 member.getMemo()
+//				);
+//	}
+//			public void memoDelete(int memberno) {
+//				jdbcTemplate.update("delete from member where memberno = ?", memberno);
+//			}
+//	public void memoDelete(MemberDto member) {
+//	    jdbcTemplate.update("UPDATE MEMBER SET memo = NULL WHERE MEMBERNO = ?",member);
+//	}
+//	
+//	public void memoDelete2(int memberno) {
+//	    jdbcTemplate.update("UPDATE MEMBER SET memo = NULL WHERE MEMBERNO = ?",memberno);
+//	}
 	
 }
 //package spring;

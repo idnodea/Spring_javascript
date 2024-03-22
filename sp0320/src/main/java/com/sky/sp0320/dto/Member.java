@@ -4,9 +4,13 @@ import java.time.LocalDateTime;
 
 import com.sky.sp0320.service.WrongIdPasswordException;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.ToString;
 
 @ToString
+@Builder
+@AllArgsConstructor
 public class Member {
 
 	private Long id;

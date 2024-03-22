@@ -35,13 +35,28 @@ public class MemberService {
 		return memberDao.selectByMemberno(memberno);
 	}
 	
-	public void memoUpdate(MemberDto member) {
-		memberDao.memoUpdate(member);
-	}
-	public void memoDelete(int memberno) {
-		memberDao.memoDelete(memberno);
-	}
+	public void memoUpdate(int memberno, String memo) {
+        memberDao.memoUpdate(memberno, memo);
+    }
+
+    public void memoDelete(int memberno) {
+        memberDao.memoDelete(memberno);
+    }
+
+    // memberno를 이용해 특정 회원의 메모를 조회합니다.
+    public String findMemoByMemberno(int memberno) {
+        return memberDao.findMemoByMemberno(memberno);
+    }
+}
+	
+//	public void memoUpdate(MemberDto member) {
+//		memberDao.memoUpdate(member);
+//	}
+//	public void memoDelete(MemberDto member) {
+//		memberDao.memoDelete(member);
+//	}
+	
 //	public MemberDto findById(String id) {
 //		return memberDao.selectById(id);
 //	}
-}
+

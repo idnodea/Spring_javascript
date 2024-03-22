@@ -9,7 +9,7 @@ import co_1.sp0321pro.service.WrongIdPasswordException;
 @ToString
 public class MemberDto {
 
-    private Integer memberno;
+    private int memberno;
     private String id;
     private String email;
     // private String password;
@@ -18,7 +18,15 @@ public class MemberDto {
     private String memo;
     // private LocalDateTime registerDateTime;
     // private String action;
-
+    
+    public MemberDto() {
+        // 기본 생성자의 본문은 비워둘 수 있습니다.
+    }
+//    public MemberDto(int memberno) {
+//    	this.memberno=memberno;
+//    }
+    
+    
 	public MemberDto(Integer memberno, String id, String email, int age, String name, String memo) {
 //		super();
 		this.memberno = memberno;
@@ -28,7 +36,14 @@ public class MemberDto {
 		this.name = name;
 		this.memo = memo;
 	}
-    
+	public MemberDto( int memberno, String email, int age, String name, String memo) {
+		super();
+		this.memberno = memberno;
+		this.email = email;
+		this.age = age;
+		this.name = name;
+		this.memo = memo;
+	}
 //
 //    public void changePassword(String oldPassword, String newPassword) {
 //        if (!password.equals(oldPassword))
@@ -83,4 +98,6 @@ public class MemberDto {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
+
 }

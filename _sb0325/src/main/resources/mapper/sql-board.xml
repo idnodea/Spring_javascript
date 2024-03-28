@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.idea.mapper.BoardMapper">
+	<select id="selectCount" resultType="Integer">
+		select count(*) from member
+	</select>
+
+
+	<select id="selectBoardList" resultType="com.idea.dto.BoardDto">
+		<![CDATA[
+			SELECT
+				ID,
+				EMAIL,
+				PASSWORD,
+				NAME,
+				DATE_FORMAT(REGDATE, '%Y.%m.%d %H:%i:%s') AS REGDATE
+			FROM
+				MEMBER
+			ORDER BY id DESC
+		]]>
+	</select>
+	<insert id ="insertBoard" parameterType="com.idea.dto.BoardDto">  <!-- BoardMapper.java의 이름과 같아야함 -->
+		<![CDATA[
+			INSERT INTO member
+			(
+			email,password,name,regdate
+			)
+			values(
+				#{email},
+				#{password},
+				#{name},
+				NOW()
+			)
+			
+		]]>
+		
+	</insert>
+	<delete id="deleteBoard" parameterType="com.idea.dto.BoardDto">
+		delete from member where id =#{id}
+		
+	</delete>
+	<update id="updateBoard" parameterType="com.idea.dto.BoardDto">
+		<![CDATA[
+        UPDATE member
+        SET email = #{email}, password = #{password}, name = #{name}, regdate = NOW()
+        WHERE id = #{id}
+   		 ]]>
+	</update>
+</mapper>

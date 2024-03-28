@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sky.repository.MemberMapper">
+
+    <select id="selectCount" resultType="LONG">
+        select count(*) from member
+    </select>
+    
+    <select id="selectByEmail" resultType="com.sky.spring.Member">
+        select * from MEMBER where EMAIL = #{email}
+    </select>
+
+    <insert id="insertMember" parameterType="com.sky.spring.Member" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO MEMBER (email, password, name, regdate) values (#{email}, #{password}, #{name}, now())
+    </insert>
+    
+    <update id="updateMember" parameterType="com.sky.spring.Member">
+        UPDATE MEMBER
+        SET email = #{email}, password = #{password}, name = #{name}, regdate = now()
+        WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteMember" parameterType="java.lang.Long">
+        delete from MEMBER where ID = #{id}
+    </delete>
+    
+</mapper>

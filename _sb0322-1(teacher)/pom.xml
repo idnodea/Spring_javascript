@@ -9,9 +9,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sky</groupId>
-	<artifactId>_sb0322t</artifactId>
+	<artifactId>_sb0322-1teacher</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>_sb0322t</name>
+	<name>_sb0322-1teacher</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -32,11 +32,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -85,6 +80,12 @@
 			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.2.0</version>
 		</dependency>
 
 	</dependencies>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sky.mapper.EmpMapper">
+
+	<!-- --> 
+	<select id="empCount" resultType="Integer">
+		select count(*) from EMP
+	</select>
+
+
+	<select id="selectEmpList" resultType="com.sky.dto.Emp">
+		<![CDATA[
+		select
+		    empno,
+		    ename,
+		    job,
+		    mgr,
+		    hiredate,
+		    sal,
+		    comm,
+		    deptno
+		from emp
+		order by empno desc
+		
+		]]>
+	</select>
+	<insert id ="insertEmp" parameterType="com.sky.dto.Emp">  <!-- EmpMapper.java의 이름과 같아야함 -->
+		<![CDATA[
+			INSERT INTO EMP
+			(
+			empno,
+			ename,
+			job,
+			mgr,
+			hiredate,
+			sal,
+			comm,
+			deptno
+			)
+			values(
+				#{empno},
+				#{ename},
+				#{job},
+				#{mgr},
+				#{hiredate},
+				#{sal},
+				#{comm, jdbcType=NUMERIC},
+				#{deptno}
+			)
+			
+		]]>
+		
+	</insert>
+	<!--<delete id="deleteEmp" parameterType="com.sky.dto.Emp">
+		delete from EMP where EMPNO =#{EMPNO}
+		
+	</delete>-->
+	 <delete id="deleteEmp" parameterType="java.lang.Integer">
+    	delete from EMP where EMPNO = #{value}
+	</delete>
+	
+	<!--<update id="updateEmp" parameterType="com.sky.dto.Emp">
+		<![CDATA[
+        UPDATE emp
+        SET empno = #{empno}, ename = #{ename}, job = #{job}, hiredate = #{hiredate},
+        sal= #{sal},comm= #{comm}, deptno= #{deptno}
+        WHERE empno = #{empno}
+   		 ]]>
+	</update>-->
+	
+	<update id="updateEmp" parameterType="com.sky.dto.Emp">
+    <![CDATA[
+        UPDATE emp
+        SET ename = #{ename}, job = #{job}, mgr = #{mgr}, hiredate = #{hiredate},
+        sal = #{sal}, comm = #{comm, jdbcType=NUMERIC}, deptno = #{deptno}
+        WHERE empno = #{empno}
+    ]]>
+</update>
+</mapper>

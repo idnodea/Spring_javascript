@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.repository.OrderMapper">
+
+    <!-- 모든 주문 정보 조회 -->
+    <select id="selectAllOrder" resultType="com.sky.model.OrderPro">
+        SELECT order_id, order_name, order_email, order_tel, pro_id
+        FROM order_pro
+    </select>
+ 	 <insert id="insertOrder" parameterType="com.example.demo.model.OrderPro">
+        INSERT INTO orders (order_name, order_email, order_tel, prod_id)
+        VALUES (#{orderName}, #{orderEmail}, #{orderTel}, #{prodId})
+    </insert>
+
+    <select id="selectOrderById" resultType="com.example.demo.model.OrderPro">
+        SELECT * FROM orders WHERE order_id = #{orderId}
+    </select>
+ 	
+    <!-- 주문 ID로 주문 정보 조회 -->
+ <!--   <select id="selectOrderById" parameterType="long" resultType="com.sky.model.OrderPro">
+        SELECT order_id, order_name, order_email, order_tel, pro_id
+        FROM order_pro
+        WHERE order_id = #{id}
+    </select>  -->
+
+    <!-- 주문 추가 -->
+ <!--   <insert id="insertOrder" parameterType="com.sky.model.OrderPro">
+        INSERT INTO order_pro (order_name, order_email, order_tel, pro_id)
+        VALUES (#{orderName}, #{orderEmail}, #{orderTel}, #{proId})
+    </insert> -->
+    
+    
+    <!-- 주문 정보 업데이트 -->
+    <update id="updateOrder" parameterType="com.sky.model.OrderPro">
+        UPDATE order_pro
+        SET order_name = #{orderName},
+            order_email = #{orderEmail},
+            order_tel = #{orderTel},
+            pro_id = #{proId}
+        WHERE order_id = #{orderId}
+    </update>
+
+    <!-- 주문 삭제 -->
+    <delete id="deleteOrder" parameterType="long">
+        DELETE FROM order_pro
+        WHERE order_id = #{id}
+    </delete>
+
+</mapper>

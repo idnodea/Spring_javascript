@@ -1,0 +1,18 @@
+{{>layout/header}}
+<div>
+   <h1>처음페이지</h1>
+    <h2>{{memberName}}</h2>
+    {{#aaa}}
+        <h3>aaa 있다 {{aaa}} </h3> 
+    {{/aaa}}
+    {{^aaa}}
+        <h3>aaa 없다 </h3>
+    {{/aaa}} 
+    
+    
+    <h3>리스트로 이동</h3>
+    <p><a href="/list">리스트로 가기</a></p>
+    
+</body>
+</div>
+{{>layout/footer}}

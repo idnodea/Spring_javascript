@@ -1,0 +1,31 @@
+{{>layout/header}}
+
+<h1>게시글 등록</h1>
+
+<div class="col-md-12">
+    <div class="col-md-4">
+        <!-- action을 /insertProduct로 설정하고, method를 POST로 변경 -->
+        <form action="/insertProduct" method="post">
+            <div class="form-group">
+                <label for="prodId">번호</label>
+                <!-- name 속성 추가 -->
+                <input type="text" class="form-control" id="prodId" name="prodId" placeholder="제품 ID를 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="prodName">제품명</label>
+                <!-- name 속성 추가 -->
+                <input type="text" class="form-control" id="prodName" name="prodName" placeholder="제품명을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="prodPrice">가격</label>
+                <!-- textarea를 input으로 변경하고, name 속성 추가 -->
+                <input type="text" class="form-control" id="prodPrice" name="prodPrice" placeholder="가격을 입력하세요">
+            </div>
+            <!-- 버튼 타입을 button에서 submit으로 변경 -->
+            <button type="submit" class="btn btn-primary">등록</button>
+        </form>
+        <a href="/" role="button" class="btn btn-secondary">취소</a>
+    </div>
+</div>
+
+{{>layout/footer}}
